@@ -1,5 +1,5 @@
 ﻿# Geography Quiz
-Geography Quiz by LucaJ.
+Geography Quiz
 
 ## Installation
 Important: Copy the project file in a directory in which the current 
