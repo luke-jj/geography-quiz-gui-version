@@ -1,0 +1,667 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77A61D37-A96D-4543-A68D-7529B27AB6F3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GeographyQuizGUI</RootNamespace>
+    <AssemblyName>GeographyQuizGUI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.109.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.109.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Data\Context.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Highscore.cs" />
+    <Compile Include="Viewcontroller\ViewController.cs" />
+    <Compile Include="Viewmodel\Question.cs" />
+    <Compile Include="Viewmodel\Quiz.cs" />
+    <Compile Include="Viewmodel\ViewModel.cs" />
+    <Compile Include="Views\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewQuizView.xaml.cs">
+      <DependentUpon>NewQuizView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuizView.xaml.cs">
+      <DependentUpon>QuizView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\HighScoreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\HighScoreView.xaml.cs">
+      <DependentUpon>HighScoreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\MainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewQuizView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuizView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="assets\mydb.db" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\64x64\ad.png" />
+    <Resource Include="assets\64x64\ae.png" />
+    <Resource Include="assets\64x64\af.png" />
+    <Resource Include="assets\64x64\ag.png" />
+    <Resource Include="assets\64x64\ai.png" />
+    <Resource Include="assets\64x64\al.png" />
+    <Resource Include="assets\64x64\am.png" />
+    <Resource Include="assets\64x64\an.png" />
+    <Resource Include="assets\64x64\ao.png" />
+    <Resource Include="assets\64x64\aq.png" />
+    <Resource Include="assets\64x64\ar.png" />
+    <Resource Include="assets\64x64\as.png" />
+    <Resource Include="assets\64x64\at.png" />
+    <Resource Include="assets\64x64\au.png" />
+    <Resource Include="assets\64x64\aw.png" />
+    <Resource Include="assets\64x64\ax.png" />
+    <Resource Include="assets\64x64\az.png" />
+    <Resource Include="assets\64x64\ba.png" />
+    <Resource Include="assets\64x64\bb.png" />
+    <Resource Include="assets\64x64\bd.png" />
+    <Resource Include="assets\64x64\be.png" />
+    <Resource Include="assets\64x64\bf.png" />
+    <Resource Include="assets\64x64\bg.png" />
+    <Resource Include="assets\64x64\bh.png" />
+    <Resource Include="assets\64x64\bi.png" />
+    <Resource Include="assets\64x64\bj.png" />
+    <Resource Include="assets\64x64\bl.png" />
+    <Resource Include="assets\64x64\bm.png" />
+    <Resource Include="assets\64x64\bn.png" />
+    <Resource Include="assets\64x64\bo.png" />
+    <Resource Include="assets\64x64\bq.png" />
+    <Resource Include="assets\64x64\br.png" />
+    <Resource Include="assets\64x64\bs.png" />
+    <Resource Include="assets\64x64\bt.png" />
+    <Resource Include="assets\64x64\bv.png" />
+    <Resource Include="assets\64x64\bw.png" />
+    <Resource Include="assets\64x64\by.png" />
+    <Resource Include="assets\64x64\bz.png" />
+    <Resource Include="assets\64x64\ca.png" />
+    <Resource Include="assets\64x64\cc.png" />
+    <Resource Include="assets\64x64\cd.png" />
+    <Resource Include="assets\64x64\cf.png" />
+    <Resource Include="assets\64x64\cg.png" />
+    <Resource Include="assets\64x64\ch.png" />
+    <Resource Include="assets\64x64\ci.png" />
+    <Resource Include="assets\64x64\ck.png" />
+    <Resource Include="assets\64x64\cl.png" />
+    <Resource Include="assets\64x64\cm.png" />
+    <Resource Include="assets\64x64\cn.png" />
+    <Resource Include="assets\64x64\co.png" />
+    <Resource Include="assets\64x64\cr.png" />
+    <Resource Include="assets\64x64\cu.png" />
+    <Resource Include="assets\64x64\cv.png" />
+    <Resource Include="assets\64x64\cw.png" />
+    <Resource Include="assets\64x64\cx.png" />
+    <Resource Include="assets\64x64\cy.png" />
+    <Resource Include="assets\64x64\cz.png" />
+    <Resource Include="assets\32x32\ad.png" />
+    <Resource Include="assets\32x32\ae.png" />
+    <Resource Include="assets\32x32\af.png" />
+    <Resource Include="assets\32x32\ag.png" />
+    <Resource Include="assets\32x32\ai.png" />
+    <Resource Include="assets\32x32\al.png" />
+    <Resource Include="assets\32x32\am.png" />
+    <Resource Include="assets\32x32\an.png" />
+    <Resource Include="assets\32x32\ao.png" />
+    <Resource Include="assets\32x32\aq.png" />
+    <Resource Include="assets\32x32\ar.png" />
+    <Resource Include="assets\32x32\as.png" />
+    <Resource Include="assets\32x32\at.png" />
+    <Resource Include="assets\32x32\au.png" />
+    <Resource Include="assets\32x32\aw.png" />
+    <Resource Include="assets\32x32\ax.png" />
+    <Resource Include="assets\32x32\az.png" />
+    <Resource Include="assets\32x32\ba.png" />
+    <Resource Include="assets\32x32\bb.png" />
+    <Resource Include="assets\32x32\bd.png" />
+    <Resource Include="assets\32x32\be.png" />
+    <Resource Include="assets\32x32\bf.png" />
+    <Resource Include="assets\32x32\bg.png" />
+    <Resource Include="assets\32x32\bh.png" />
+    <Resource Include="assets\32x32\bi.png" />
+    <Resource Include="assets\32x32\bj.png" />
+    <Resource Include="assets\32x32\bl.png" />
+    <Resource Include="assets\32x32\bm.png" />
+    <Resource Include="assets\32x32\bn.png" />
+    <Resource Include="assets\32x32\bo.png" />
+    <Resource Include="assets\32x32\bq.png" />
+    <Resource Include="assets\32x32\br.png" />
+    <Resource Include="assets\32x32\bs.png" />
+    <Resource Include="assets\32x32\bt.png" />
+    <Resource Include="assets\32x32\bv.png" />
+    <Resource Include="assets\32x32\bw.png" />
+    <Resource Include="assets\32x32\by.png" />
+    <Resource Include="assets\32x32\bz.png" />
+    <Resource Include="assets\32x32\ca.png" />
+    <Resource Include="assets\32x32\cc.png" />
+    <Resource Include="assets\32x32\cd.png" />
+    <Resource Include="assets\32x32\cf.png" />
+    <Resource Include="assets\32x32\cg.png" />
+    <Resource Include="assets\32x32\ch.png" />
+    <Resource Include="assets\32x32\ci.png" />
+    <Resource Include="assets\32x32\ck.png" />
+    <Resource Include="assets\32x32\cl.png" />
+    <Resource Include="assets\32x32\cm.png" />
+    <Resource Include="assets\32x32\cn.png" />
+    <Resource Include="assets\32x32\co.png" />
+    <Resource Include="assets\32x32\cr.png" />
+    <Resource Include="assets\32x32\cu.png" />
+    <Resource Include="assets\32x32\cv.png" />
+    <Resource Include="assets\32x32\cw.png" />
+    <Resource Include="assets\32x32\cx.png" />
+    <Resource Include="assets\32x32\cy.png" />
+    <Resource Include="assets\32x32\cz.png" />
+    <Resource Include="assets\32x32\de.png" />
+    <Resource Include="assets\32x32\dj.png" />
+    <Resource Include="assets\32x32\dk.png" />
+    <Resource Include="assets\32x32\dm.png" />
+    <Resource Include="assets\32x32\do.png" />
+    <Resource Include="assets\32x32\dz.png" />
+    <Resource Include="assets\32x32\ec.png" />
+    <Resource Include="assets\32x32\ee.png" />
+    <Resource Include="assets\32x32\eg.png" />
+    <Resource Include="assets\32x32\eh.png" />
+    <Resource Include="assets\32x32\er.png" />
+    <Resource Include="assets\32x32\es.png" />
+    <Resource Include="assets\32x32\et.png" />
+    <Resource Include="assets\32x32\fi.png" />
+    <Resource Include="assets\32x32\fj.png" />
+    <Resource Include="assets\32x32\fk.png" />
+    <Resource Include="assets\32x32\fm.png" />
+    <Resource Include="assets\32x32\fo.png" />
+    <Resource Include="assets\32x32\fr.png" />
+    <Resource Include="assets\32x32\ga.png" />
+    <Resource Include="assets\32x32\gb.png" />
+    <Resource Include="assets\32x32\gd.png" />
+    <Resource Include="assets\32x32\ge.png" />
+    <Resource Include="assets\32x32\gf.png" />
+    <Resource Include="assets\32x32\gg.png" />
+    <Resource Include="assets\32x32\gh.png" />
+    <Resource Include="assets\32x32\gi.png" />
+    <Resource Include="assets\32x32\gl.png" />
+    <Resource Include="assets\32x32\gm.png" />
+    <Resource Include="assets\32x32\gn.png" />
+    <Resource Include="assets\32x32\gp.png" />
+    <Resource Include="assets\32x32\gq.png" />
+    <Resource Include="assets\32x32\gr.png" />
+    <Resource Include="assets\32x32\gs.png" />
+    <Resource Include="assets\32x32\gt.png" />
+    <Resource Include="assets\32x32\gu.png" />
+    <Resource Include="assets\32x32\gw.png" />
+    <Resource Include="assets\32x32\gy.png" />
+    <Resource Include="assets\32x32\hk.png" />
+    <Resource Include="assets\32x32\hm.png" />
+    <Resource Include="assets\32x32\hn.png" />
+    <Resource Include="assets\32x32\hr.png" />
+    <Resource Include="assets\32x32\ht.png" />
+    <Resource Include="assets\32x32\hu.png" />
+    <Resource Include="assets\32x32\id.png" />
+    <Resource Include="assets\32x32\ie.png" />
+    <Resource Include="assets\32x32\il.png" />
+    <Resource Include="assets\32x32\im.png" />
+    <Resource Include="assets\32x32\in.png" />
+    <Resource Include="assets\32x32\io.png" />
+    <Resource Include="assets\32x32\iq.png" />
+    <Resource Include="assets\32x32\ir.png" />
+    <Resource Include="assets\32x32\is.png" />
+    <Resource Include="assets\32x32\it.png" />
+    <Resource Include="assets\32x32\je.png" />
+    <Resource Include="assets\32x32\jm.png" />
+    <Resource Include="assets\32x32\jo.png" />
+    <Resource Include="assets\32x32\jp.png" />
+    <Resource Include="assets\32x32\ke.png" />
+    <Resource Include="assets\32x32\kg.png" />
+    <Resource Include="assets\32x32\kh.png" />
+    <Resource Include="assets\32x32\ki.png" />
+    <Resource Include="assets\32x32\km.png" />
+    <Resource Include="assets\32x32\kn.png" />
+    <Resource Include="assets\32x32\kp.png" />
+    <Resource Include="assets\32x32\kr.png" />
+    <Resource Include="assets\32x32\kw.png" />
+    <Resource Include="assets\32x32\ky.png" />
+    <Resource Include="assets\32x32\kz.png" />
+    <Resource Include="assets\32x32\la.png" />
+    <Resource Include="assets\32x32\lb.png" />
+    <Resource Include="assets\32x32\lc.png" />
+    <Resource Include="assets\32x32\li.png" />
+    <Resource Include="assets\32x32\lk.png" />
+    <Resource Include="assets\32x32\lr.png" />
+    <Resource Include="assets\32x32\ls.png" />
+    <Resource Include="assets\32x32\lt.png" />
+    <Resource Include="assets\32x32\lu.png" />
+    <Resource Include="assets\32x32\lv.png" />
+    <Resource Include="assets\32x32\ly.png" />
+    <Resource Include="assets\32x32\ma.png" />
+    <Resource Include="assets\32x32\mc.png" />
+    <Resource Include="assets\32x32\md.png" />
+    <Resource Include="assets\32x32\me.png" />
+    <Resource Include="assets\32x32\mf.png" />
+    <Resource Include="assets\32x32\mg.png" />
+    <Resource Include="assets\32x32\mh.png" />
+    <Resource Include="assets\32x32\mk.png" />
+    <Resource Include="assets\32x32\ml.png" />
+    <Resource Include="assets\32x32\mm.png" />
+    <Resource Include="assets\32x32\mn.png" />
+    <Resource Include="assets\32x32\mo.png" />
+    <Resource Include="assets\32x32\mp.png" />
+    <Resource Include="assets\32x32\mq.png" />
+    <Resource Include="assets\32x32\mr.png" />
+    <Resource Include="assets\32x32\ms.png" />
+    <Resource Include="assets\32x32\mt.png" />
+    <Resource Include="assets\32x32\mu.png" />
+    <Resource Include="assets\32x32\mv.png" />
+    <Resource Include="assets\32x32\mw.png" />
+    <Resource Include="assets\32x32\mx.png" />
+    <Resource Include="assets\32x32\my.png" />
+    <Resource Include="assets\32x32\mz.png" />
+    <Resource Include="assets\32x32\na.png" />
+    <Resource Include="assets\32x32\nc.png" />
+    <Resource Include="assets\32x32\ne.png" />
+    <Resource Include="assets\32x32\nf.png" />
+    <Resource Include="assets\32x32\ng.png" />
+    <Resource Include="assets\32x32\ni.png" />
+    <Resource Include="assets\32x32\nl.png" />
+    <Resource Include="assets\32x32\no.png" />
+    <Resource Include="assets\32x32\np.png" />
+    <Resource Include="assets\32x32\nr.png" />
+    <Resource Include="assets\32x32\nu.png" />
+    <Resource Include="assets\32x32\nz.png" />
+    <Resource Include="assets\32x32\om.png" />
+    <Resource Include="assets\32x32\pa.png" />
+    <Resource Include="assets\32x32\pe.png" />
+    <Resource Include="assets\32x32\pf.png" />
+    <Resource Include="assets\32x32\pg.png" />
+    <Resource Include="assets\32x32\ph.png" />
+    <Resource Include="assets\32x32\pk.png" />
+    <Resource Include="assets\32x32\pl.png" />
+    <Resource Include="assets\32x32\pm.png" />
+    <Resource Include="assets\32x32\pn.png" />
+    <Resource Include="assets\32x32\pr.png" />
+    <Resource Include="assets\32x32\ps.png" />
+    <Resource Include="assets\32x32\pt.png" />
+    <Resource Include="assets\32x32\pw.png" />
+    <Resource Include="assets\32x32\py.png" />
+    <Resource Include="assets\32x32\qa.png" />
+    <Resource Include="assets\32x32\re.png" />
+    <Resource Include="assets\32x32\ro.png" />
+    <Resource Include="assets\32x32\rs.png" />
+    <Resource Include="assets\32x32\ru.png" />
+    <Resource Include="assets\32x32\rw.png" />
+    <Resource Include="assets\32x32\sa.png" />
+    <Resource Include="assets\32x32\sb.png" />
+    <Resource Include="assets\32x32\sc.png" />
+    <Resource Include="assets\32x32\sd.png" />
+    <Resource Include="assets\32x32\se.png" />
+    <Resource Include="assets\32x32\sg.png" />
+    <Resource Include="assets\32x32\sh.png" />
+    <Resource Include="assets\32x32\si.png" />
+    <Resource Include="assets\32x32\sj.png" />
+    <Resource Include="assets\32x32\sk.png" />
+    <Resource Include="assets\32x32\sl.png" />
+    <Resource Include="assets\32x32\sm.png" />
+    <Resource Include="assets\32x32\sn.png" />
+    <Resource Include="assets\32x32\so.png" />
+    <Resource Include="assets\32x32\sr.png" />
+    <Resource Include="assets\32x32\ss.png" />
+    <Resource Include="assets\32x32\st.png" />
+    <Resource Include="assets\32x32\sv.png" />
+    <Resource Include="assets\32x32\sx.png" />
+    <Resource Include="assets\32x32\sy.png" />
+    <Resource Include="assets\32x32\sz.png" />
+    <Resource Include="assets\32x32\tc.png" />
+    <Resource Include="assets\32x32\td.png" />
+    <Resource Include="assets\32x32\tf.png" />
+    <Resource Include="assets\32x32\tg.png" />
+    <Resource Include="assets\32x32\th.png" />
+    <Resource Include="assets\32x32\tj.png" />
+    <Resource Include="assets\32x32\tk.png" />
+    <Resource Include="assets\32x32\tl.png" />
+    <Resource Include="assets\32x32\tm.png" />
+    <Resource Include="assets\32x32\tn.png" />
+    <Resource Include="assets\32x32\to.png" />
+    <Resource Include="assets\32x32\tr.png" />
+    <Resource Include="assets\32x32\tt.png" />
+    <Resource Include="assets\32x32\tv.png" />
+    <Resource Include="assets\32x32\tw.png" />
+    <Resource Include="assets\32x32\tz.png" />
+    <Resource Include="assets\32x32\ua.png" />
+    <Resource Include="assets\32x32\ug.png" />
+    <Resource Include="assets\32x32\um.png" />
+    <Resource Include="assets\32x32\us.png" />
+    <Resource Include="assets\32x32\uy.png" />
+    <Resource Include="assets\32x32\uz.png" />
+    <Resource Include="assets\32x32\va.png" />
+    <Resource Include="assets\32x32\vc.png" />
+    <Resource Include="assets\32x32\ve.png" />
+    <Resource Include="assets\32x32\vg.png" />
+    <Resource Include="assets\32x32\vi.png" />
+    <Resource Include="assets\32x32\vn.png" />
+    <Resource Include="assets\32x32\vu.png" />
+    <Resource Include="assets\32x32\wf.png" />
+    <Resource Include="assets\32x32\ws.png" />
+    <Resource Include="assets\32x32\xk.png" />
+    <Resource Include="assets\32x32\ye.png" />
+    <Resource Include="assets\32x32\yt.png" />
+    <Resource Include="assets\32x32\za.png" />
+    <Resource Include="assets\32x32\zm.png" />
+    <Resource Include="assets\32x32\zw.png" />
+    <Content Include="assets\data_seed.sql" />
+    <Content Include="assets\data_seed_copy.sql" />
+    <Resource Include="assets\64x64\de.png" />
+    <Resource Include="assets\64x64\dj.png" />
+    <Resource Include="assets\64x64\dk.png" />
+    <Resource Include="assets\64x64\dm.png" />
+    <Resource Include="assets\64x64\do.png" />
+    <Resource Include="assets\64x64\dz.png" />
+    <Resource Include="assets\64x64\ec.png" />
+    <Resource Include="assets\64x64\ee.png" />
+    <Resource Include="assets\64x64\eg.png" />
+    <Resource Include="assets\64x64\eh.png" />
+    <Resource Include="assets\64x64\er.png" />
+    <Resource Include="assets\64x64\es.png" />
+    <Resource Include="assets\64x64\et.png" />
+    <Resource Include="assets\64x64\fi.png" />
+    <Resource Include="assets\64x64\fj.png" />
+    <Resource Include="assets\64x64\fk.png" />
+    <Resource Include="assets\64x64\fm.png" />
+    <Resource Include="assets\64x64\fo.png" />
+    <Resource Include="assets\64x64\fr.png" />
+    <Resource Include="assets\64x64\ga.png" />
+    <Resource Include="assets\64x64\gb.png" />
+    <Resource Include="assets\64x64\gd.png" />
+    <Resource Include="assets\64x64\ge.png" />
+    <Resource Include="assets\64x64\gf.png" />
+    <Resource Include="assets\64x64\gg.png" />
+    <Resource Include="assets\64x64\gh.png" />
+    <Resource Include="assets\64x64\gi.png" />
+    <Resource Include="assets\64x64\gl.png" />
+    <Resource Include="assets\64x64\gm.png" />
+    <Resource Include="assets\64x64\gn.png" />
+    <Resource Include="assets\64x64\gp.png" />
+    <Resource Include="assets\64x64\gq.png" />
+    <Resource Include="assets\64x64\gr.png" />
+    <Resource Include="assets\64x64\gs.png" />
+    <Resource Include="assets\64x64\gt.png" />
+    <Resource Include="assets\64x64\gu.png" />
+    <Resource Include="assets\64x64\gw.png" />
+    <Resource Include="assets\64x64\gy.png" />
+    <Resource Include="assets\64x64\hk.png" />
+    <Resource Include="assets\64x64\hm.png" />
+    <Resource Include="assets\64x64\hn.png" />
+    <Resource Include="assets\64x64\hr.png" />
+    <Resource Include="assets\64x64\ht.png" />
+    <Resource Include="assets\64x64\hu.png" />
+    <Resource Include="assets\64x64\id.png" />
+    <Resource Include="assets\64x64\ie.png" />
+    <Resource Include="assets\64x64\il.png" />
+    <Resource Include="assets\64x64\im.png" />
+    <Resource Include="assets\64x64\in.png" />
+    <Resource Include="assets\64x64\io.png" />
+    <Resource Include="assets\64x64\iq.png" />
+    <Resource Include="assets\64x64\ir.png" />
+    <Resource Include="assets\64x64\is.png" />
+    <Resource Include="assets\64x64\it.png" />
+    <Resource Include="assets\64x64\je.png" />
+    <Resource Include="assets\64x64\jm.png" />
+    <Resource Include="assets\64x64\jo.png" />
+    <Resource Include="assets\64x64\jp.png" />
+    <Resource Include="assets\64x64\ke.png" />
+    <Resource Include="assets\64x64\kg.png" />
+    <Resource Include="assets\64x64\kh.png" />
+    <Resource Include="assets\64x64\ki.png" />
+    <Resource Include="assets\64x64\km.png" />
+    <Resource Include="assets\64x64\kn.png" />
+    <Resource Include="assets\64x64\kp.png" />
+    <Resource Include="assets\64x64\kr.png" />
+    <Resource Include="assets\64x64\kw.png" />
+    <Resource Include="assets\64x64\ky.png" />
+    <Resource Include="assets\64x64\kz.png" />
+    <Resource Include="assets\64x64\la.png" />
+    <Resource Include="assets\64x64\lb.png" />
+    <Resource Include="assets\64x64\lc.png" />
+    <Resource Include="assets\64x64\li.png" />
+    <Resource Include="assets\64x64\lk.png" />
+    <Resource Include="assets\64x64\lr.png" />
+    <Resource Include="assets\64x64\ls.png" />
+    <Resource Include="assets\64x64\lt.png" />
+    <Resource Include="assets\64x64\lu.png" />
+    <Resource Include="assets\64x64\lv.png" />
+    <Resource Include="assets\64x64\ly.png" />
+    <Resource Include="assets\64x64\ma.png" />
+    <Resource Include="assets\64x64\mc.png" />
+    <Resource Include="assets\64x64\md.png" />
+    <Resource Include="assets\64x64\me.png" />
+    <Resource Include="assets\64x64\mf.png" />
+    <Resource Include="assets\64x64\mg.png" />
+    <Resource Include="assets\64x64\mh.png" />
+    <Resource Include="assets\64x64\mk.png" />
+    <Resource Include="assets\64x64\ml.png" />
+    <Resource Include="assets\64x64\mm.png" />
+    <Resource Include="assets\64x64\mn.png" />
+    <Resource Include="assets\64x64\mo.png" />
+    <Resource Include="assets\64x64\mp.png" />
+    <Resource Include="assets\64x64\mq.png" />
+    <Resource Include="assets\64x64\mr.png" />
+    <Resource Include="assets\64x64\ms.png" />
+    <Resource Include="assets\64x64\mt.png" />
+    <Resource Include="assets\64x64\mu.png" />
+    <Resource Include="assets\64x64\mv.png" />
+    <Resource Include="assets\64x64\mw.png" />
+    <Resource Include="assets\64x64\mx.png" />
+    <Resource Include="assets\64x64\my.png" />
+    <Resource Include="assets\64x64\mz.png" />
+    <Resource Include="assets\64x64\na.png" />
+    <Resource Include="assets\64x64\nc.png" />
+    <Resource Include="assets\64x64\ne.png" />
+    <Resource Include="assets\64x64\nf.png" />
+    <Resource Include="assets\64x64\ng.png" />
+    <Resource Include="assets\64x64\ni.png" />
+    <Resource Include="assets\64x64\nl.png" />
+    <Resource Include="assets\64x64\no.png" />
+    <Resource Include="assets\64x64\np.png" />
+    <Resource Include="assets\64x64\nr.png" />
+    <Resource Include="assets\64x64\nu.png" />
+    <Resource Include="assets\64x64\nz.png" />
+    <Resource Include="assets\64x64\om.png" />
+    <Resource Include="assets\64x64\pa.png" />
+    <Resource Include="assets\64x64\pe.png" />
+    <Resource Include="assets\64x64\pf.png" />
+    <Resource Include="assets\64x64\pg.png" />
+    <Resource Include="assets\64x64\ph.png" />
+    <Resource Include="assets\64x64\pk.png" />
+    <Resource Include="assets\64x64\pl.png" />
+    <Resource Include="assets\64x64\pm.png" />
+    <Resource Include="assets\64x64\pn.png" />
+    <Resource Include="assets\64x64\pr.png" />
+    <Resource Include="assets\64x64\ps.png" />
+    <Resource Include="assets\64x64\pt.png" />
+    <Resource Include="assets\64x64\pw.png" />
+    <Resource Include="assets\64x64\py.png" />
+    <Resource Include="assets\64x64\qa.png" />
+    <Resource Include="assets\64x64\re.png" />
+    <Resource Include="assets\64x64\ro.png" />
+    <Resource Include="assets\64x64\rs.png" />
+    <Resource Include="assets\64x64\ru.png" />
+    <Resource Include="assets\64x64\rw.png" />
+    <Resource Include="assets\64x64\sa.png" />
+    <Resource Include="assets\64x64\sb.png" />
+    <Resource Include="assets\64x64\sc.png" />
+    <Resource Include="assets\64x64\sd.png" />
+    <Resource Include="assets\64x64\se.png" />
+    <Resource Include="assets\64x64\sg.png" />
+    <Resource Include="assets\64x64\sh.png" />
+    <Resource Include="assets\64x64\si.png" />
+    <Resource Include="assets\64x64\sj.png" />
+    <Resource Include="assets\64x64\sk.png" />
+    <Resource Include="assets\64x64\sl.png" />
+    <Resource Include="assets\64x64\sm.png" />
+    <Resource Include="assets\64x64\sn.png" />
+    <Resource Include="assets\64x64\so.png" />
+    <Resource Include="assets\64x64\sr.png" />
+    <Resource Include="assets\64x64\ss.png" />
+    <Resource Include="assets\64x64\st.png" />
+    <Resource Include="assets\64x64\sv.png" />
+    <Resource Include="assets\64x64\sx.png" />
+    <Resource Include="assets\64x64\sy.png" />
+    <Resource Include="assets\64x64\sz.png" />
+    <Content Include="assets\table_schema.sql" />
+    <Resource Include="assets\64x64\tc.png" />
+    <Resource Include="assets\64x64\td.png" />
+    <Resource Include="assets\64x64\tf.png" />
+    <Resource Include="assets\64x64\tg.png" />
+    <Resource Include="assets\64x64\th.png" />
+    <Resource Include="assets\64x64\tj.png" />
+    <Resource Include="assets\64x64\tk.png" />
+    <Resource Include="assets\64x64\tl.png" />
+    <Resource Include="assets\64x64\tm.png" />
+    <Resource Include="assets\64x64\tn.png" />
+    <Resource Include="assets\64x64\to.png" />
+    <Resource Include="assets\64x64\tr.png" />
+    <Resource Include="assets\64x64\tt.png" />
+    <Resource Include="assets\64x64\tv.png" />
+    <Resource Include="assets\64x64\tw.png" />
+    <Resource Include="assets\64x64\tz.png" />
+    <Resource Include="assets\64x64\ua.png" />
+    <Resource Include="assets\64x64\ug.png" />
+    <Resource Include="assets\64x64\um.png" />
+    <Resource Include="assets\64x64\us.png" />
+    <Resource Include="assets\64x64\uy.png" />
+    <Resource Include="assets\64x64\uz.png" />
+    <Resource Include="assets\64x64\va.png" />
+    <Resource Include="assets\64x64\vc.png" />
+    <Resource Include="assets\64x64\ve.png" />
+    <Resource Include="assets\64x64\vg.png" />
+    <Resource Include="assets\64x64\vi.png" />
+    <Resource Include="assets\64x64\vn.png" />
+    <Resource Include="assets\64x64\vu.png" />
+    <Resource Include="assets\64x64\wf.png" />
+    <Resource Include="assets\64x64\ws.png" />
+    <Resource Include="assets\64x64\xk.png" />
+    <Resource Include="assets\64x64\ye.png" />
+    <Resource Include="assets\64x64\yt.png" />
+    <Resource Include="assets\64x64\za.png" />
+    <Resource Include="assets\64x64\zm.png" />
+    <Resource Include="assets\64x64\zw.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+</Project>

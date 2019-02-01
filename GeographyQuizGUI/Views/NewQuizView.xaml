@@ -1,0 +1,63 @@
+﻿<Page x:Class="GeographyQuizGUI.Views.NewQuizView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GeographyQuizGUI.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewQuizView">
+    <Border Padding="10">
+        <StackPanel>
+            <TextBlock FontSize="24" HorizontalAlignment="Center" Text="New Quiz" FontWeight="Bold" Margin="0 10 0 40"/>
+            
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="1" Grid.Row="0"  Text="Setting Up A New Quiz..." Margin="0 0 0 50"/>
+                <TextBlock Margin="0 0 50 0" TextAlignment="Right"  Text="Playername:" Grid.Column="1" Grid.Row="1"/>
+                <TextBox TextChanged="PlayerNameInput_TextChanged" x:Name="PlayerNameInput" Padding="5" Grid.Column="2" Grid.Row="1"/>
+                <TextBlock Margin="0 30 50 0" TextAlignment="Right" Grid.Column="1" Grid.Row="2"  Text="Choose your quiz mode:"/>
+                <RadioButton Checked="CountryNameButton_Checked" Margin="0 20 50 0" HorizontalAlignment="Right" x:Name="CountryNameButton" GroupName="QuizMode" Grid.Column="1" Grid.Row="3"/>
+                <RadioButton Checked="FlagNameButton_Checked" Margin="0 20 50 0" HorizontalAlignment="Right" x:Name="FlagNameButton" GroupName="QuizMode" Grid.Column="1" Grid.Row="4"/>
+                <RadioButton Checked="CapitalNameButton_Checked" Margin="0 20 50 0" HorizontalAlignment="Right" x:Name="CapitalNameButton" GroupName="QuizMode" Grid.Column="1" Grid.Row="5"/>
+                <TextBlock Margin="0 20 0 0" Grid.Column="2" Grid.Row="3"  Text="Country name"/>
+                <TextBlock Margin="0 20 0 0" Grid.Column="2" Grid.Row="4"  Text="Flag"/>
+                <TextBlock Margin="0 20 0 0" Grid.Column="2" Grid.Row="5"  Text="Capital"/>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+
+                <Button IsEnabled="False" Click="StartQuiz_Click" x:Name="StartQuizButton" Margin="0 100 10 0" Grid.Column="1" Content="Start Quiz"/>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1" Click="MainMenu_Click" x:Name="BackToMainMenuButton" Margin="0,50,0,0" Content="Back To Main Menu"/>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Page>
